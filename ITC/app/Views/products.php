@@ -8,27 +8,27 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #30D5C8; 
-            color: #fff; 
+            background-color: #30D5C8;
+            color: #fff;
         }
 
         .bg-primary {
-            background-color: lightblue !important; 
+            background-color: lightblue !important;
         }
 
         .table-bordered {
-            border-color: lightblue; 
+            border-color: lightblue;
         }
 
         .thead-primary {
-            background-color: lightblue; 
+            background-color: lightblue;
         }
     </style>
 </head>
 
 <body>
     <header class="bg-primary text-white text-center py-4">
-       
+
     </header>
     <div class="container mt-4">
         <div class="row">
@@ -45,9 +45,15 @@
                     <div class="form-group">
                         <label for="StudGender">Student Gender:</label>
                         <select class="form-control" name="StudGender">
-                            <option value="Male" <?= (isset($pro['StudGender']) && $pro['StudGender'] === 'Male') ? 'selected' : '' ?>>Male</option>
-                            <option value="Female" <?= (isset($pro['StudGender']) && $pro['StudGender'] === 'Female') ? 'selected' : '' ?>>Female</option>
-                            <option value="Other" <?= (isset($pro['StudGender']) && $pro['StudGender'] === 'Other') ? 'selected' : '' ?>>Other</option>
+                            <option value="Male"
+                                <?= (isset($pro['StudGender']) && $pro['StudGender'] === 'Male') ? 'selected' : '' ?>>
+                                Male</option>
+                            <option value="Female"
+                                <?= (isset($pro['StudGender']) && $pro['StudGender'] === 'Female') ? 'selected' : '' ?>>
+                                Female</option>
+                            <option value="Other"
+                                <?= (isset($pro['StudGender']) && $pro['StudGender'] === 'Other') ? 'selected' : '' ?>>
+                                Other</option>
                         </select>
                     </div>
 
@@ -74,33 +80,19 @@
             </div>
             <div class="col-md-6">
                 <h2>Student Listing</h2>
-                <table class="table table-bordered">
-                    <thead class="thead-primary">
-                        <tr>
-                            <th>Student Name</th>
-                            <th>Student Gender</th>
-                            <th>Student Course</th>
-                            <th>Student Section</th>
-                            <th>Student Year</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($product as $pr): ?>
-                            <tr>
-                                <td><?= $pr['StudName'] ?></td>
-                                <td><?= $pr['StudGender'] ?></td>
-                                <td><?= $pr['StudCourse'] ?></td>
-                                <td><?= $pr['StudSection'] ?></td>
-                                <td><?= $pr['StudYear'] ?></td>
-                                <td>
-                                    <a href="/delete/<?= $pr['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
-                                    <a href="/edit/<?= $pr['id'] ?>" class="btn btn-primary btn-sm">Edit</a>
-                                </td>
-                            </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
+                <ul>
+                    <?php foreach ($product as $pr): ?>
+                    <li>
+                        <strong>Student Name:</strong> <?= $pr['StudName'] ?><br>
+                        <strong>Student Gender:</strong> <?= $pr['StudGender'] ?><br>
+                        <strong>Student Course:</strong> <?= $pr['StudCourse'] ?><br>
+                        <strong>Student Section:</strong> <?= $pr['StudSection'] ?><br>
+                        <strong>Student Year:</strong> <?= $pr['StudYear'] ?><br>
+                        <a href="/delete/<?= $pr['id'] ?>" class="btn btn-danger btn-sm">Delete</a>
+                        <a href="/edit/<?= $pr['id'] ?>" class="btn btn-primary btn-sm">Edit</a>
+                    </li>
+                    <?php endforeach ?>
+                </ul>
             </div>
         </div>
     </div>
